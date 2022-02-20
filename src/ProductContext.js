@@ -17,11 +17,9 @@ export const ProductProvider = ({children}) =>{
     const [carrito, setCarrito] = useState("")
    
 
-    const mostCarrito = () =>{
-        console.log(JSON.parse(carrito))
-    }
+   
     return (
-        <ProductContext.Provider value ={[items, setItems, setCarrito, mostCarrito]}>
+        <ProductContext.Provider value ={[items, setItems, setCarrito, carrito]}>
             {children}
         </ProductContext.Provider>
     );

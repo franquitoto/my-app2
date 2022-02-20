@@ -14,6 +14,7 @@ import React from 'react';
 import Home from './views/Home/Home';
 import Nosotros from './views/Nosotros/Nosotros';
 import Productos from './views/Productos/Productos';
+import Carrito from './views/Cart/Carrito';
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/nosotros' element={<Nosotros/>}></Route>
         <Route path='/productos' element={<Productos/>}></Route>
+        <Route path='/carrito' element={<Carrito></Carrito>}></Route>
       </Routes>
     </Router>
     </ProductProvider>
