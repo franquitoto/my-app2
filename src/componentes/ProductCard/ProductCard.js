@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './ProductCard.css';
 
-const productosAgregados = [];
+
 
 const useStyles = makeStyles({
     root: {
@@ -28,7 +28,8 @@ const useStyles = makeStyles({
 });
 
 const ProductCard = ({ data }) => {
-    const [items, setItems, setCarrito] = useContext(ProductContext);
+    const [items,carrito, setItems, addCarrito,  removCarrito] = useContext(ProductContext);
+    /*const productosAgregados = [];
     let bolean = false;
     const addCarrito = () =>{
         productosAgregados.forEach(e => {
@@ -45,7 +46,8 @@ const ProductCard = ({ data }) => {
         }
         
        
-    }
+    }*/
+    
     const classes = useStyles();
     return (
         <div className='card'>
@@ -59,7 +61,7 @@ const ProductCard = ({ data }) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <button onClick={addCarrito}>Agregar al carrito</button>
+                    <button onClick={() => addCarrito(data)}>Agregar al carrito</button>
                 </CardActions>
             </Card>
         </div>

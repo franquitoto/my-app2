@@ -3,12 +3,11 @@ import ProductList from '../../componentes/ProductList/ProductList'
 import { ProductContext } from '../../ProductContext';
 
 const Home = () => {
-  const [items, setItems, setCarrito] = useContext(ProductContext);
+  const [items, setItems] = useContext(ProductContext);
   
   return (
     <div>
       <ProductList></ProductList>
-      
     </div>
   )
 }
