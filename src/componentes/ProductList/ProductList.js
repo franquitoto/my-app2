@@ -6,7 +6,7 @@ import './ProductList.css';
 
 const ProductList = () => {
     const [items,carrito, setItems, addCarrito,  removCarrito] = useContext(ProductContext);
-    console.log('data',items);
+    
   return (
         <div className='container'>
             {items.map((items) =>{

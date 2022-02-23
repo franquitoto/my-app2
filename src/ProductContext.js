@@ -14,25 +14,25 @@ const initialState = [
 
 export const ProductProvider = ({ children }) => {
     const [items, setItems] = useState(initialState);
+    const [carrito2, setCarrito2] = useState([]);
     let carrito = [];
     let cont = 0
     const addCarrito = (data) => {
-        
-       if(carrito.length <= 0){
-           console.log(carrito.length)
-           carrito.push(data)
-       }else{
-           carrito.forEach(e => {
-               if (e.id == data.id) {
-                  e.selection+=1
-                  cont+=1
-                  console.log(cont)
-                  console.log(carrito) 
-               }
-           });
-       }
-     
+        let aux = 0;
+        carrito.forEach(e => {
+            if(e.id == data.id){
+                e.selection+=1
+                aux = 1
+                console.log(carrito)
+            }
+        });
+        if(aux == 0){
+            carrito.push(data)
+            console.log(carrito)
+        }
     }
+
+   
 
     const removCarrito = (data) =>{
         let i = 0

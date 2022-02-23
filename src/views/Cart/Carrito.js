@@ -5,7 +5,7 @@ import './Carrito.css';
 
 const Carrito = () => {
     let precioTotal = 0
-    const [items,carrito, setItems, addCarrito,  removCarrito] = useContext(ProductContext);
+    const [items,carrito, setItems, addCarrito,  removCarrito, cargarCarrito] = useContext(ProductContext);
     
   return (
     <> 
