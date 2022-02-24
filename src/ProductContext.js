@@ -1,19 +1,31 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+
+// FIREBASE - FIRESTON 
+import {db} from './firebase/firebaseConfig';
+import { collection, query, where, getDocs, QuerySnapshot } from 'firebase/firestore';
+
 
 export const ProductContext = createContext();
 
-const initialState = [
-    { id: 1, name: 'Mesa', price: 1000, stock: 10, selection: 1 },
-    { id: 2, name: 'Silla', price: 650, stock: 10, selection: 1 },
-    { id: 3, name: 'Desayunador', price: 300, stock: 10, selection: 1 },
-    { id: 4, name: 'Cocinita', price: 1200, stock: 10, selection: 1 },
-    { id: 5, name: 'Matero', price: 250, stock: 10, selection: 1 },
-    { id: 6, name: 'Pizera', price: 150, stock: 10, selection: 1 },
-
-];
-
 export const ProductProvider = ({ children }) => {
-    const [items, setItems] = useState(initialState);
+    const [items, setItems] = useState([]);
+
+    useEffect(() =>{
+        const getProducts = async () =>{
+            const q = query(collection(db, 'productos'));
+            const docs = [];
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+
+                docs.push({...doc.data(), id: parseInt(doc.id)});
+                
+            });
+            setItems(docs)
+        }
+        getProducts();
+    }, []);
+
+    
     const [carrito2, setCarrito2] = useState([]);
     let carrito = [];
     let cont = 0
