@@ -6,6 +6,7 @@ import { collection, query, where, getDocs, QuerySnapshot } from 'firebase/fires
 
 const initialCart = []
 let changedCart;
+let auxChangedCart;
 
 
 export const ProductContext = createContext();
@@ -31,15 +32,31 @@ export const ProductProvider = ({ children }) => {
     
     const [carrito2, setCarrito2] = useState(initialCart);
     let carrito = [];
-    let cont = 0
+    
+    const addCarritoSoloUno = (data) =>{
+        changedCart = [
+            ...carrito2,
+            data,
+        ]
+        auxChangedCart = changedCart
+        setCarrito2(changedCart)
+    }
     const addCarrito = (data) => {
-        if(carrito2.length === 0){
-            changedCart = [
-                ...carrito2,
-                data,
-            ]
-            setCarrito2(changedCart)
-            console.log(carrito2)
+        if (carrito2.length === 0) {
+            addCarritoSoloUno(data)
+        }else{
+            let aux = 0;
+            auxChangedCart.forEach(e => {
+                if(e.id == data.id){
+                    e.selection+=1
+                    aux = 1
+                }
+            });
+            if(aux === 0){
+                addCarritoSoloUno(data)
+            }else{
+                setCarrito2(auxChangedCart)
+            }
         }
 
         /*let aux = 0;
