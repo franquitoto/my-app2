@@ -94,7 +94,7 @@ export const ProductProvider = ({ children }) => {
 
 
     return (
-        <ProductContext.Provider value={[items,carrito2, setItems, addCarrito,  removCarrito]}>
+        <ProductContext.Provider value={[items,carrito2, setItems, addCarrito,  removCarrito, setCarrito2]}>
             {children}
         </ProductContext.Provider>
     );

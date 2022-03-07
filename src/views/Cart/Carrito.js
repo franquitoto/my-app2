@@ -11,25 +11,32 @@ const Carrito = () => {
     if(carrito2.lenth === 0){
         bolean = true
     }
+const onClick = () =>{
+    <Link to="/shops">Home</Link>
+}
     
   return (
     <>
     {carrito2.length === 0 ?<p>El carrito esta vacio, vuelva a <Link to="/">Home</Link> para completarlo</p> :
         <div className='container2'>
-        <div className='resumen'>
-            {carrito2.map((e) => {
-                precioTotal = precioTotal + e.price
-                return(<li>{e.name}</li>)
-            })}
-            <p>$ {precioTotal}</p>
+            <div className='resumen'>
+                {carrito2.map((e) => {
+                    precioTotal = precioTotal + e.price
+                    return(<li>{e.name}</li>)
+                })}
+                <p>$ {precioTotal}</p>
+            </div>
+            <div className='articulos'>
+                {carrito2.map((data) =>{
+                    
+                    return(<CartCard data={data} key={data.id} ></CartCard>)
+                })}
+            </div>
+            <div className='finalizarCompra'><Link to="/shops"><button >Finalizar compra</button></Link></div>
         </div>
-        <div className='articulos'>
-            {carrito2.map((data) =>{
-                
-                return(<CartCard data={data} key={data.id} ></CartCard>)
-            })}
-        </div>
-    </div> 
+        
+    
+    
     }
     
         
